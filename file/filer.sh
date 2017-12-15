@@ -1,175 +1,41 @@
-hadoop@ubuntu:~$ cd apps 
-hadoop@ubuntu:~/apps$ cd hadoop
-hadoop@ubuntu:~/apps/hadoop$ sbin/all.start.sh
-bash: sbin/all.start.sh: No such file or directory
-hadoop@ubuntu:~/apps/hadoop$ sbin/start-all.sh
-This script is Deprecated. Instead use start-dfs.sh and start-yarn.sh
-Starting namenodes on [localhost]
-localhost: starting namenode, logging to /home/hadoop/apps/hadoop/logs/hadoop-hadoop-namenode-ubuntu.out
-localhost: starting datanode, logging to /home/hadoop/apps/hadoop/logs/hadoop-hadoop-datanode-ubuntu.out
-Starting secondary namenodes [0.0.0.0]
-0.0.0.0: starting secondarynamenode, logging to /home/hadoop/apps/hadoop/logs/hadoop-hadoop-secondarynamenode-ubuntu.out
-starting yarn daemons
-starting resourcemanager, logging to /home/hadoop/apps/hadoop/logs/yarn-hadoop-resourcemanager-ubuntu.out
-localhost: starting nodemanager, logging to /home/hadoop/apps/hadoop/logs/yarn-hadoop-nodemanager-ubuntu.out
-hadoop@ubuntu:~/apps/hadoop$ jps
-2482 NameNode
-2615 DataNode
-3499 Jps
-2781 SecondaryNameNode
-3007 ResourceManager
-hadoop@ubuntu:~/apps/hadoop$ cd
-hadoop@ubuntu:~$ hadoop fs -put text1 /
-hadoop@ubuntu:~$ hadoop fs -put text2 /
-hadoop@ubuntu:~$ hadoop fs -lsr /
-lsr: DEPRECATED: Please use 'ls -R' instead.
-drwxr-xr-x   - hadoop supergroup          0 2017-12-08 15:36 /VincentLi
--rw-r--r--   1 hadoop supergroup         12 2017-12-08 15:43 /input
--rw-r--r--   1 hadoop supergroup         17 2017-12-14 18:57 /text1
--rw-r--r--   1 hadoop supergroup         18 2017-12-14 18:58 /text2
-drwxr-xr-x   - hadoop supergroup          0 2017-12-08 15:58 /user
-drwxr-xr-x   - hadoop supergroup          0 2017-12-08 15:59 /user/hadoop
--rw-r--r--   3 hadoop supergroup         11 2017-12-08 15:59 /user/hadoop/merge.txt
--rw-r--r--   3 hadoop supergroup         11 2017-12-08 15:59 /user/hadoop/test
-hadoop@ubuntu:~$ hadoop fs -cat /text3
-1 23 32 32 43 54 54 56 65 76 87 98 hadoop@ubuntu:~$ hadoop fs -cat /text2
-56 54 32 32 76 23
-hadoop@ubuntu:~$ hadoop fs -cat /text1
-1 87 98 65 43 54
-hadoop@ubuntu:~$ hadoop fs -cat /text1
-1 87 98 65 43 54
-hadoop@ubuntu:~$ hadoop fs -cat /text2
-56 54 32 32 76 23
-hadoop@ubuntu:~$ hadoop fs -cat /text3
-1 23 32 32 43 54 
-hadoop@ubuntu:~$ hadoop fs -rm /text3
-17/12/15 13:41:43 INFO fs.TrashPolicyDefault: Namenode trash configuration: Deletion interval = 0 minutes, Emptier interval = 0 minutes.
-Deleted /text3
-hadoop@ubuntu:~$ hadoop fs -cat /text1
-1 87 98 65 43 54
-hadoop@ubuntu:~$ hadoop fs -cat /text3
-cat: `/text3': No such file or directory
-hadoop@ubuntu:~$ hadoop fs -cat /text3
-1 23 32 32 43 54 54 56 65 76 87 98 hadoop@ubuntu:~$ hadoop fs -rm /text3
-17/12/15 13:52:19 INFO fs.TrashPolicyDefault: Namenode trash configuration: Deletion interval = 0 minutes, Emptier interval = 0 minutes.
-Deleted /text3
-hadoop@ubuntu:~$ hadoop fs -rm /text3
-rm: `/text3': No such file or directory
-hadoop@ubuntu:~$ hadoop fs -cat /text3
-cat: `/text3': No such file or directory
-hadoop@ubuntu:~$ hadoop fs -cat /text1
-1 87 98 65 43 54
-hadoop@ubuntu:~$ hadoop fs -cat /text3
-cat: `/text3': No such file or directory
-hadoop@ubuntu:~$ hadoop fs -cat /text2
-56 54 32 32 76 23
-hadoop@ubuntu:~$ hadoop fs -cat /text3
-1 23 32 32 43 54 hadoop fs -rm /text3
-17/12/15 13:58:46 INFO fs.TrashPolicyDefault: Namenode trash configuration: Deletion interval = 0 minutes, Emptier interval = 0 minutes.
-Deleted /text3
-hadoop@ubuntu:~$ hadoop fs -cat /text3
-cat: `/text3': No such file or directory
-hadoop@ubuntu:~$ hadoop fs -cat /text1
-1 87 98 65 43 54
-hadoop@ubuntu:~$ hadoop fs -cat /text2
-56 54 32 32 76 23
-hadoop@ubuntu:~$ hadoop fs -cat /text3
-cat: `/text3': No such file or directory
-hadoop@ubuntu:~$ gedit song.txt
-hadoop@ubuntu:~$ cat song.txt
-cat: song.txt: No such file or directory
-hadoop@ubuntu:~$ hadoop fs -cat song.txt
-cat: `song.txt': No such file or directory
-hadoop@ubuntu:~$ ls
-apps     Documents  examples.desktop  Music     Public     text1  Videos
-Desktop  Downloads  file              Pictures  Templates  text2  workspace
-hadoop@ubuntu:~$ ll
-total 140
-drwxr-xr-x 21 hadoop hadoop 4096 Dec 15 13:35 ./
-drwxr-xr-x  3 root   root   4096 Nov 22 07:47 ../
-drwxrwxr-x  5 hadoop hadoop 4096 Nov 22 09:39 apps/
--rw-------  1 hadoop hadoop   56 Dec  8 15:29 .bash_history
--rw-r--r--  1 hadoop hadoop  220 Nov 22 07:47 .bash_logout
--rw-r--r--  1 hadoop hadoop 3923 Nov 22 09:56 .bashrc
-drwx------ 14 hadoop hadoop 4096 Dec  8 14:15 .cache/
-drwx------ 16 hadoop hadoop 4096 Dec  8 14:15 .config/
-drwxr-xr-x  2 hadoop hadoop 4096 Dec  8 15:47 Desktop/
--rw-r--r--  1 hadoop hadoop   25 Nov 22 07:51 .dmrc
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Documents/
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Downloads/
--rw-r--r--  1 hadoop hadoop 8980 Nov 22 07:47 examples.desktop
-drwxrwxr-x  2 hadoop hadoop 4096 Nov 22 10:05 file/
-drwx------  2 hadoop hadoop 4096 Dec 14 18:59 .gconf/
-drwx------  3 hadoop hadoop 4096 Dec 14 18:37 .gnupg/
--rw-------  1 hadoop hadoop 1908 Dec 14 18:37 .ICEauthority
-drwx------  3 hadoop hadoop 4096 Nov 22 07:51 .local/
-drwx------  5 hadoop hadoop 4096 Dec  8 15:29 .mozilla/
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Music/
-drwxrwxr-x  2 hadoop hadoop 4096 Nov 22 11:42 .oracle_jre_usage/
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Pictures/
--rw-r--r--  1 hadoop hadoop  675 Nov 22 07:47 .profile
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Public/
-drwx------  2 hadoop hadoop 4096 Nov 22 10:01 .ssh/
--rw-r--r--  1 hadoop hadoop    0 Nov 22 09:54 .sudo_as_admin_successful
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Templates/
--rw-rw-r--  1 hadoop hadoop   26 Dec 15 13:35 text1
--rw-rw-r--  1 hadoop hadoop   18 Dec 14 18:49 text2
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Videos/
-drwxrwxr-x  5 hadoop hadoop 4096 Dec 14 19:05 workspace/
--rw-------  1 hadoop hadoop  102 Dec 14 18:36 .Xauthority
--rw-------  1 hadoop hadoop   82 Dec 14 18:37 .xsession-errors
--rw-------  1 hadoop hadoop   82 Dec  8 15:26 .xsession-errors.old
-hadoop@ubuntu:~$ chmod 775 my-mapreduce-wordcount.jar
-chmod: cannot access 'my-mapreduce-wordcount.jar': No such file or directory
-hadoop@ubuntu:~$ chmod 775 my-mapreduce-wordcount.jar
-chmod: cannot access 'my-mapreduce-wordcount.jar': No such file or directory
-hadoop@ubuntu:~$ chmod 775 my-mapreduce-WordCount.jar
-chmod: cannot access 'my-mapreduce-WordCount.jar': No such file or directory
-hadoop@ubuntu:~$ ll
-total 140
-drwxr-xr-x 21 hadoop hadoop 4096 Dec 15 13:35 ./
-drwxr-xr-x  3 root   root   4096 Nov 22 07:47 ../
-drwxrwxr-x  5 hadoop hadoop 4096 Nov 22 09:39 apps/
--rw-------  1 hadoop hadoop   56 Dec  8 15:29 .bash_history
--rw-r--r--  1 hadoop hadoop  220 Nov 22 07:47 .bash_logout
--rw-r--r--  1 hadoop hadoop 3923 Nov 22 09:56 .bashrc
-drwx------ 14 hadoop hadoop 4096 Dec  8 14:15 .cache/
-drwx------ 16 hadoop hadoop 4096 Dec  8 14:15 .config/
-drwxr-xr-x  2 hadoop hadoop 4096 Dec  8 15:47 Desktop/
--rw-r--r--  1 hadoop hadoop   25 Nov 22 07:51 .dmrc
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Documents/
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Downloads/
--rw-r--r--  1 hadoop hadoop 8980 Nov 22 07:47 examples.desktop
-drwxrwxr-x  2 hadoop hadoop 4096 Nov 22 10:05 file/
-drwx------  2 hadoop hadoop 4096 Dec 14 18:59 .gconf/
-drwx------  3 hadoop hadoop 4096 Dec 14 18:37 .gnupg/
--rw-------  1 hadoop hadoop 1908 Dec 14 18:37 .ICEauthority
-drwx------  3 hadoop hadoop 4096 Nov 22 07:51 .local/
-drwx------  5 hadoop hadoop 4096 Dec  8 15:29 .mozilla/
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Music/
-drwxrwxr-x  2 hadoop hadoop 4096 Nov 22 11:42 .oracle_jre_usage/
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Pictures/
--rw-r--r--  1 hadoop hadoop  675 Nov 22 07:47 .profile
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Public/
-drwx------  2 hadoop hadoop 4096 Nov 22 10:01 .ssh/
--rw-r--r--  1 hadoop hadoop    0 Nov 22 09:54 .sudo_as_admin_successful
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Templates/
--rw-rw-r--  1 hadoop hadoop   26 Dec 15 13:35 text1
--rw-rw-r--  1 hadoop hadoop   18 Dec 14 18:49 text2
-drwxr-xr-x  2 hadoop hadoop 4096 Nov 22 07:51 Videos/
-drwxrwxr-x  5 hadoop hadoop 4096 Dec 14 19:05 workspace/
--rw-------  1 hadoop hadoop  102 Dec 14 18:36 .Xauthority
--rw-------  1 hadoop hadoop   82 Dec 14 18:37 .xsession-errors
--rw-------  1 hadoop hadoop   82 Dec  8 15:26 .xsession-errors.old
-hadoop@ubuntu:~$ ls
-apps     Documents  examples.desktop  Music     Public     text1  Videos
-Desktop  Downloads  file              Pictures  Templates  text2  workspace
-hadoop@ubuntu:~$ chmod 775 my-mapreduce-wordcount.jar
-chmod: cannot access 'my-mapreduce-wordcount.jar': No such file or directory
-hadoop@ubuntu:~$ ls
-apps       Downloads         Music                       Public     text2
-Desktop    examples.desktop  my-mapreduce-wordcount.jar  Templates  Videos
-Documents  file              Pictures                    text1      workspace
+cd apps 
+cd hadoop
+~/apps/hadoop$ sbin/start-all.sh
+~/apps/hadoop$ jps
+
+~/apps/hadoop$ cd
+ hadoop fs -put text1 /
+ hadoop fs -put text2 /
+ hadoop fs -lsr /
+hadoop fs -cat /text3
+~$ hadoop fs -cat /text3
+hadoop fs -cat /text1
+hadoop fs -cat /text1
+hadoop fs -cat /text2
+hadoop fs -cat /text3
+hadoop fs -rm /text3
+hadoop fs -cat /text1
+hadoop fs -cat /text3
+hadoop fs -cat /text3
+hadoop fs -rm /text3
+hadoop fs -rm /text3
+hadoop fs -cat /text3
+hadoop fs -cat /text1
+hadoop fs -cat /text3
+hadoop fs -cat /text2
+hadoop fs -cat /text3
+hadoop fs -rm /text3
+hadoop fs -cat /text3
+hadoop fs -cat /text1
+hadoop fs -cat /text2
+hadoop fs -cat /text3
+gedit song.txt
+cat song.txt
+hadoop fs -cat song.txt
+ls
+ll
+
+ls
 hadoop@ubuntu:~$ rm -rf file
 hadoop@ubuntu:~$ mkdir ~/file
 hadoop@ubuntu:~$ ls
